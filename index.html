@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="description" content="Revisa transforma seus próprios apontamentos em uma sessão curta de revisão ativa com resumo, flashcards e mini-quiz.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Revisa — revisão ativa sem complicar">
+  <meta property="og:description" content="Cole seus apontamentos e receba uma sessão curta com pontos-chave, flashcards e mini-quiz.">
+  <meta property="og:url" content="https://helioconde.github.io/revisa/">
+  <link rel="canonical" href="https://helioconde.github.io/revisa/">
+  <title>Revisa — revisão ativa sem complicar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Revisa — início"><span class="brand-mark" aria-hidden="true">R</span><span>revisa</span></a>
+    <nav class="top-actions" aria-label="Ações">
+      <span class="status-pill" data-i18n="localMode">MVP local</span>
+      <button class="ghost small" id="history-toggle" type="button" data-i18n="history">Histórico</button>
+      <button class="ghost small" id="language-toggle" type="button" aria-label="Mudar idioma">EN</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="eyebrow">REVISÃO ATIVA · SEM CONTA</p>
+        <h1 data-i18n="heroTitle">Transforme matéria em <span>revisão que você realmente faz.</span></h1>
+        <p data-i18n="heroText">Cole seus próprios apontamentos. O Revisa organiza uma sessão curta com pontos-chave, flashcards e um mini-quiz para você sair do modo leitura e começar a lembrar.</p>
+        <div class="hero-points" aria-label="Vantagens">
+          <span data-i18n="benefit1">✓ Funciona sem conta</span>
+          <span data-i18n="benefit2">✓ Seus textos ficam neste navegador</span>
+          <span data-i18n="benefit3">✓ Sessão pronta em segundos</span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Exemplo de sessão">
+        <div class="hero-card-head"><span data-i18n="sessionPreview">SESSÃO DE 10 MIN</span><b>01</b></div>
+        <strong data-i18n="previewTitle">Revisar antes de esquecer</strong>
+        <ol>
+          <li><span>2 min</span><b data-i18n="preview1">Pontos-chave</b></li>
+          <li><span>4 min</span><b data-i18n="preview2">Flashcards</b></li>
+          <li><span>4 min</span><b data-i18n="preview3">Mini-quiz</b></li>
+        </ol>
+      </aside>
+    </section>
+
+    <section class="workspace shell" aria-label="Montar revisão">
+      <section class="panel composer-panel">
+        <div class="panel-head">
+          <div><p class="eyebrow" data-i18n="step1">1 · SUA MATÉRIA</p><h2 data-i18n="composerTitle">O que você precisa revisar?</h2></div>
+          <button class="text-button" id="example-button" type="button" data-i18n="useExample">Usar exemplo</button>
+        </div>
+
+        <form id="review-form">
+          <div class="field-row">
+            <label class="field"><span data-i18n="subject">Matéria / tema</span><input id="subject" name="subject" maxlength="80" placeholder="Ex.: Revolução Francesa" required></label>
+            <label class="field"><span data-i18n="goal">Objetivo</span>
+              <select id="goal" name="goal">
+                <option value="test" data-i18n-option="goalTest">Prova / avaliação</option>
+                <option value="class" data-i18n-option="goalClass">Acompanhar aula</option>
+                <option value="memory" data-i18n-option="goalMemory">Memorizar conceitos</option>
+                <option value="interview" data-i18n-option="goalInterview">Entrevista / apresentação</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span data-i18n="notes">Seus apontamentos</span>
+            <textarea id="notes" name="notes" rows="12" maxlength="12000" placeholder="Cole aqui suas anotações, resumo, trecho da apostila ou pontos que você precisa revisar." required></textarea>
+            <small class="field-help"><span id="notes-count">0</span>/12000 · <span data-i18n="notesHelp">quanto mais específico, melhor a revisão</span></small>
+          </label>
+
+          <div class="composer-footer">
+            <p data-i18n="privacyNote">Nada é enviado para um provedor externo neste MVP.</p>
+            <button class="primary" type="submit" data-i18n="buildReview">Montar minha revisão</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="panel side-panel">
+        <p class="eyebrow" data-i18n="studyGuide">COMO USAR BEM</p>
+        <h2 data-i18n="guideTitle">Não cole o livro inteiro.</h2>
+        <div class="tip-list">
+          <article><b>01</b><p data-i18n="tip1">Use o conteúdo que realmente entrou na aula ou na sua lista de estudo.</p></article>
+          <article><b>02</b><p data-i18n="tip2">Misture conceitos, datas, definições e relações importantes.</p></article>
+          <article><b>03</b><p data-i18n="tip3">Depois da sessão, marque o que errou e revise de novo amanhã.</p></article>
+        </div>
+        <div class="ad-slot" aria-label="Espaço reservado para publicidade"><span data-i18n="ad">PUBLICIDADE</span><small data-i18n="adNote">espaço reservado · não interfere na revisão</small></div>
+      </aside>
+    </section>
+
+    <section class="result shell" id="result" hidden aria-live="polite">
+      <div class="result-head">
+        <div><p class="eyebrow" data-i18n="step2">2 · SUA SESSÃO</p><h2 id="result-title">—</h2><p id="result-summary" class="muted"></p></div>
+        <div class="result-actions"><button class="ghost" id="copy-session" type="button" data-i18n="copySession">Copiar sessão</button><button class="ghost" id="new-session" type="button" data-i18n="newSession">Nova revisão</button></div>
+      </div>
+
+      <div class="progress-strip" aria-label="Progresso">
+        <div><span data-i18n="progressKey">Pontos-chave</span><strong id="count-key">0</strong></div>
+        <div><span data-i18n="progressCards">Flashcards</span><strong id="count-cards">0</strong></div>
+        <div><span data-i18n="progressQuiz">Perguntas</span><strong id="count-quiz">0</strong></div>
+      </div>
+
+      <section class="result-grid">
+        <article class="result-card key-card"><div class="card-heading"><div><span>01</span><h3 data-i18n="keyIdeas">Pontos-chave</h3></div><small data-i18n="readFirst">Leia uma vez, depois esconda</small></div><div id="key-points" class="key-points"></div></article>
+        <article class="result-card flashcard-card"><div class="card-heading"><div><span>02</span><h3 data-i18n="flashcards">Flashcards</h3></div><small data-i18n="tapCards">Clique para virar</small></div><div id="flashcards" class="flashcards"></div></article>
+        <article class="result-card quiz-card"><div class="card-heading"><div><span>03</span><h3 data-i18n="quiz">Mini-quiz</h3></div><small id="quiz-score" data-i18n="quizHint">Responda sem olhar acima</small></div><div id="quiz-list" class="quiz-list"></div></article>
+      </section>
+
+      <section class="review-tomorrow">
+        <div><p class="eyebrow" data-i18n="tomorrowEyebrow">PRÓXIMA REVISÃO</p><h3 data-i18n="tomorrowTitle">Volte amanhã para o que você errou.</h3><p data-i18n="tomorrowText">O histórico local guarda esta sessão neste dispositivo para você retomar sem recriar tudo.</p></div>
+        <button class="primary secondary-primary" id="save-session" type="button" data-i18n="saveSession">Salvar no histórico</button>
+      </section>
+    </section>
+
+    <section class="why shell"><div><p class="eyebrow" data-i18n="whyEyebrow">POR QUE O REVISA</p><h2 data-i18n="whyTitle">Ler parece estudo. Recuperar da memória é o que mostra se ficou.</h2></div><p data-i18n="whyText">O MVP não tenta substituir professor, curso ou material. Ele só reduz a distância entre “tenho minhas anotações” e “consigo me testar sobre elas”.</p></section>
+  </main>
+
+  <dialog id="history-dialog" class="history-dialog">
+    <div class="dialog-head"><div><p class="eyebrow" data-i18n="historyEyebrow">NESTE DISPOSITIVO</p><h2 data-i18n="historyTitle">Revisões salvas</h2></div><button class="icon-button" id="history-close" type="button" aria-label="Fechar">×</button></div>
+    <div id="history-list" class="history-list"></div>
+    <div class="dialog-foot"><small data-i18n="historyNote">O histórico fica somente neste navegador.</small><button class="text-button danger" id="history-clear" type="button" data-i18n="clearHistory">Limpar histórico</button></div>
+  </dialog>
+
+  <footer class="footer shell"><div><strong>revisa</strong><span data-i18n="footerText">Ferramenta de apoio à revisão. Confira sempre o conteúdo na sua fonte original.</span></div><nav aria-label="Institucional"><a href="sobre.html" data-i18n="about">Sobre</a><a href="privacidade.html" data-i18n="privacy">Privacidade</a><a href="termos.html" data-i18n="terms">Termos</a></nav></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
