@@ -63,6 +63,9 @@ Caso GitHub Pages ainda não esteja habilitado no repositório:
 - [ ] validação visual publicada;
 - [ ] teste com usuários reais;
 - [ ] GitHub Pages confirmado.
+- [x] Browser E2E automatizado;
+
+> O Browser E2E cobre geração da revisão, salvamento no histórico, bloqueio de conteúdo curto e troca PT-BR/EN. O restante do gate é validação publicada/humana.
 
 ## V2 — somente após validar o MVP
 
