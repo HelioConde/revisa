@@ -33,12 +33,7 @@
     if (reloading) return;
     reloading = true;
     showNotice();
-    try {
-      if ("caches" in window) {
-        const keys = await caches.keys();
-        await Promise.allSettled(keys.map(key => caches.delete(key)));
-      }
-    } catch {}
+    // Other GitHub Pages projects share this origin. Do not clear global caches.
     await new Promise(resolve => setTimeout(resolve, 650));
     const nextUrl = new URL(window.location.href);
     nextUrl.searchParams.set(CACHE_BUST_PARAM, nextVersion.slice(0, 16) || Date.now().toString());
