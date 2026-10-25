@@ -1,96 +1,59 @@
-# Revisa — Estude com revisão ativa
+<div align="center">
+  <h1>📚 Revisa</h1>
+  <p><strong>Transforme suas próprias anotações em uma sessão rápida de revisão ativa.</strong></p>
+  <p><img alt="Status" src="https://img.shields.io/badge/status-MVP%20local-64748b"> <img alt="Privacidade" src="https://img.shields.io/badge/processamento-no%20navegador-2563eb"></p>
+  <p><a href="https://helioconde.github.io/revisa/"><strong>Abrir versão web</strong></a> · <a href="#uso-r%C3%A1pido"><strong>Uso rápido</strong></a> · <a href="#rodar-localmente"><strong>Desenvolvimento</strong></a></p>
+</div>
 
-**Converta suas anotações em pontos-chave, flashcards e pequenos testes para sessões rápidas de estudo.**
+## A proposta
 
-**Como funciona:** informe tema e objetivo, cole o material de estudo, gere a revisão e salve as sessões localmente para consultá-las depois.
+O **Revisa** é uma ferramenta de estudo para transformar apontamentos fornecidos pelo próprio usuário em **pontos-chave, flashcards e mini-quiz**. A proposta é estimular recuperação ativa da memória com sessões pequenas, sem exigir conta ou um serviço de IA remoto.
 
-**Privacidade:** no MVP descrito, o processamento ocorre no navegador, sem envio das anotações para um serviço externo de IA. Dados salvos localmente podem ser perdidos ao limpar o navegador.
+## Uso rápido
 
-> O gerador organiza o conteúdo recebido; não substitui verificação factual nem avaliação pedagógica.
+1. Informe a matéria, o tema e seu objetivo.
+2. Cole os apontamentos que deseja revisar.
+3. Gere uma sessão com resumo, cartões e perguntas.
+4. Teste a si mesmo, reveja os cartões e salve a sessão.
+5. Reabra revisões anteriores no histórico do navegador.
 
----
+| Recurso | Como funciona |
+| --- | --- |
+| Pontos-chave | Organização automática do conteúdo inserido |
+| Flashcards | Cartões de perguntas e respostas |
+| Mini-quiz | Perguntas de revisão baseadas nas anotações |
+| Histórico | Dados locais do navegador |
+| Idiomas | Português e inglês |
+| Dispositivos | Interface adaptada para desktop e celular |
 
-Produto de educação do **Ideias IA Lab** para transformar apontamentos do próprio usuário em uma sessão curta de revisão ativa.
+## Privacidade e limites
 
-## Estado atual
+**O MVP processa o material localmente no navegador.** Não há envio das anotações para um modelo remoto de IA nesta versão. Os dados ficam no `localStorage` e **podem ser apagados** ao limpar o site ou mudar de navegador.
 
-MVP funcional iniciado em 07/10/2026.
+A ferramenta não valida automaticamente a veracidade do conteúdo informado, nem substitui livros, professores ou fontes confiáveis.
 
-O fluxo principal já permite:
+## Rodar localmente
 
-- informar matéria/tema e objetivo;
-- colar apontamentos;
-- gerar pontos-chave localmente;
-- gerar flashcards clicáveis;
-- gerar mini-quiz;
-- copiar a sessão;
-- salvar e reabrir revisões no histórico local;
-- limpar o histórico;
-- usar PT-BR ou inglês, com PT-BR como padrão;
-- usar desktop e mobile;
-- navegar por Sobre, Privacidade e Termos;
-- manter um espaço de publicidade preparado sem interromper a revisão.
+```bash
+git clone https://github.com/HelioConde/revisa.git
+cd revisa
+python -m http.server 8000
+```
 
-## Privacidade do MVP
+Acesse `http://localhost:8000`. Para verificar a estrutura:
 
-O processamento é local no navegador. **Nenhum apontamento é enviado a um provedor externo de IA nesta versão.**
-
-Revisões salvas usam localStorage no dispositivo.
-
-## Monetização
-
-O layout está preparado para anúncios, seguindo a regra do portfólio. Anúncios reais só devem ser ativados depois de deploy, conteúdo suficiente, consentimento e validação de política.
-
-## QA
-
-Execute:
-
+```bash
+npm install
 npm run check
+npm run test:e2e
+```
 
-O QA verifica sintaxe JavaScript e invariantes essenciais da página.
+O `test:e2e` depende dos navegadores Playwright instalados; esta revisão de documentação não executa os testes.
 
-## Deploy
+## Estado do projeto
 
-O workflow **Deploy GitHub Pages** está preparado para publicar a raiz do repositório.
+**MVP implementado, em validação de uso.** O foco antes de expandir é comprovar que a revisão ajuda estudantes reais, revisar acessibilidade e melhorar a qualidade dos cartões e testes gerados.
 
-Caso GitHub Pages ainda não esteja habilitado no repositório:
+Este produto integra o [Ideias IA Lab](https://github.com/HelioConde/ideias-ia-lab).
 
-1. Settings → Pages
-2. Build and deployment
-3. Source → GitHub Actions
-
-## Gate antes de expandir
-
-- [x] proposta de valor clara;
-- [x] fluxo principal local;
-- [x] estados vazio/erro/sucesso básicos;
-- [x] histórico local;
-- [x] PT-BR/EN;
-- [x] mobile;
-- [x] páginas institucionais;
-- [x] QA estático;
-- [x] publicidade preparada;
-- [ ] validação visual publicada;
-- [ ] teste com usuários reais;
-- [ ] GitHub Pages confirmado.
-- [x] Browser E2E automatizado;
-
-> O Browser E2E cobre geração da revisão, salvamento no histórico, bloqueio de conteúdo curto e troca PT-BR/EN. O restante do gate é validação publicada/humana.
-
-## V2 — somente após validar o MVP
-
-- revisão espaçada com agenda;
-- geração de perguntas com provedor real, backend-only;
-- importação de PDF/documentos;
-- conta e sincronização entre dispositivos;
-- desempenho por assunto;
-- decks compartilháveis;
-- integração opcional com calendário.
-
-## Infraestrutura
-
-O MVP não precisa de banco. Se sincronização/conta entrar na V2, usar a infraestrutura geral definida para os produtos não-gamer do portfólio.
-
-Planejamento geral:
-
-https://github.com/HelioConde/ideias-ia-lab
+Desenvolvido por [Hélio Conde](https://github.com/HelioConde).
