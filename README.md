@@ -1,4 +1,14 @@
-# Revisa
+# Revisa — Estude com revisão ativa
+
+**Converta suas anotações em pontos-chave, flashcards e pequenos testes para sessões rápidas de estudo.**
+
+**Como funciona:** informe tema e objetivo, cole o material de estudo, gere a revisão e salve as sessões localmente para consultá-las depois.
+
+**Privacidade:** no MVP descrito, o processamento ocorre no navegador, sem envio das anotações para um serviço externo de IA. Dados salvos localmente podem ser perdidos ao limpar o navegador.
+
+> O gerador organiza o conteúdo recebido; não substitui verificação factual nem avaliação pedagógica.
+
+---
 
 Produto de educação do **Ideias IA Lab** para transformar apontamentos do próprio usuário em uma sessão curta de revisão ativa.
 
